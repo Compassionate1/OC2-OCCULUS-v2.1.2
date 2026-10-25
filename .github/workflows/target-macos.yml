@@ -10,7 +10,7 @@ jobs:
   target-macos:
     runs-on: [self-hosted, macOS, ARM64, oc2-macos27]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Capture exact target environment
         run: python3.14 scripts/environment_probe.py --output artifacts/target-environment.json
       - name: Bootstrap and verify
