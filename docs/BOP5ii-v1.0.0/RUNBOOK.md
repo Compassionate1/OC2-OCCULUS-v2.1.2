@@ -1,0 +1,2 @@
+# Operator runbook
+Install in isolated virtual environment; run unit tests; execute `python -m bop5ii --trajectories 100 --steps 60 --seed 52`; review `artifacts/validation.json`, especially `release_gate_pass` and per-SNR results. Re-run with independent seeds to test stability. Do not tune hyperparameters against held-out trajectories. When gates fail, mark scientific NO-GO, open a tracked issue and revise only against a separate development/calibration partition. No service to restart, secrets to rotate, or network dependencies.

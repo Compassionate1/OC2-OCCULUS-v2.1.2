@@ -1,0 +1,20 @@
+flowchart LR
+  subgraph iOS["iOS App — SwiftUI"]
+    UI["OCCULUSApp / DashboardView"]
+    SIM["Simulator + Frames"]
+    LIVE["LiveCameraView / AVFoundation"]
+    EVI["Evidence / CryptoKit"]
+    UI --> SIM
+    UI --> EVI
+  end
+  subgraph Plane["Local Multimodal Contract"]
+    DP["DataPlane / OC2Event"] --> JSONL["JSONL oc2.event.v2"]
+  end
+  subgraph Research["Python reference — separate runtime"]
+    PY["bop5ii.model"] --> VAL["bop5ii.validation"]
+  end
+  SIM --> DP
+  EVI --> BUNDLE["Signed frames.json + manifest.json"]
+  LIVE -. "Not connected" .-> DP
+  JSONL -. "Future integration" .-> VAL
+  JSONL -. "Not implemented" .-> SAT["SATCOM / broker"]

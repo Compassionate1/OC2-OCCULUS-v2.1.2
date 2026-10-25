@@ -1,0 +1,51 @@
+# OC2 ADP-1 verification transcript
+Environment: Python 3.13; Docker and physical iOS not exercised.
+Research tests require PYTHONPATH=research-python/src.
+
+$ python3 -m unittest discover -s tests -v
+Exit: 0
+
+test_angular_rmse_and_coverage (test_oc2_math.MathTests.test_angular_rmse_and_coverage) ... ok
+test_circular_wrap (test_oc2_math.MathTests.test_circular_wrap) ... ok
+test_determinism (test_oc2_math.MathTests.test_determinism) ... ok
+test_multiple_trajectories (test_oc2_math.MathTests.test_multiple_trajectories) ... ok
+test_no_nonfinite (test_oc2_math.MathTests.test_no_nonfinite) ... ok
+test_occlusion_and_snr (test_oc2_math.MathTests.test_occlusion_and_snr) ... ok
+test_validation (test_oc2_math.MathTests.test_validation) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.020s
+
+OK
+
+$ PYTHONPATH=research-python/src python3 -m unittest discover -s research-python/tests -v
+Exit: 0
+
+test_count (test_model.ModelTests.test_count) ... ok
+test_holdout_metrics (test_model.ModelTests.test_holdout_metrics) ... ok
+test_invalid_config (test_model.ModelTests.test_invalid_config) ... ok
+test_occlusion (test_model.ModelTests.test_occlusion) ... ok
+test_probability (test_model.ModelTests.test_probability) ... ok
+test_recognition_templates (test_model.ModelTests.test_recognition_templates) ... ok
+test_repeatable (test_model.ModelTests.test_repeatable) ... ok
+test_wrap (test_model.ModelTests.test_wrap) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.019s
+
+OK
+
+$ python3 scripts/test_boms.py
+Exit: 0
+SBOM 11 declared components; CBOM 9 crypto observations; hashed 95 files
+
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.639s
+
+OK
+
+$ python3 scripts/check_architecture.py
+Exit: 0
+PASS: source traceability, UML artifacts and DOT syntax
+

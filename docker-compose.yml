@@ -1,0 +1,62 @@
+services:
+  kafka:
+    image: apache/kafka:3.9.1
+    hostname: kafka
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
+      KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/kafka/bin/kafka-broker-api-versions.sh --bootstrap-server localhost:9092 >/dev/null 2>&1"]
+      interval: 10s
+      timeout: 8s
+      retries: 15
+  timescaledb:
+    image: timescale/timescaledb:2.18.2-pg16
+    environment:
+      POSTGRES_DB: oc2
+      POSTGRES_USER: oc2
+      POSTGRES_PASSWORD: ${OC2_DB_PASSWORD:-local-dev-only-change-me}
+    ports: ["127.0.0.1:5433:5432"]
+    volumes:
+      - oc2_pgdata:/var/lib/postgresql/data
+      - ./infra/db/001_init.sql:/docker-entrypoint-initdb.d/001_init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U oc2 -d oc2"]
+      interval: 5s
+      retries: 20
+  gateway:
+    build:
+      context: .
+      dockerfile: infra/gateway/Dockerfile
+    environment:
+      OC2_KAFKA_BOOTSTRAP: kafka:9092
+      OC2_DATABASE_URL: postgresql://oc2:${OC2_DB_PASSWORD:-local-dev-only-change-me}@timescaledb:5432/oc2
+      OC2_API_TOKEN: ${OC2_API_TOKEN:-local-demo-token-change-me}
+      OC2_MODE: demo
+    ports: ["127.0.0.1:8088:8088"]
+    depends_on:
+      timescaledb: {condition: service_healthy}
+      kafka: {condition: service_healthy}
+  consumer:
+    build:
+      context: .
+      dockerfile: infra/gateway/Dockerfile
+    command: ["python", "-m", "services.consumer"]
+    environment:
+      OC2_KAFKA_BOOTSTRAP: kafka:9092
+      OC2_DATABASE_URL: postgresql://oc2:${OC2_DB_PASSWORD:-local-dev-only-change-me}@timescaledb:5432/oc2
+    depends_on:
+      timescaledb: {condition: service_healthy}
+      kafka: {condition: service_healthy}
+volumes:
+  oc2_pgdata:

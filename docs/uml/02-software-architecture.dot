@@ -1,0 +1,41 @@
+digraph OC2 {
+ graph [label="OC2 | OCCULUS v2.0.1 — Software Architecture
+RESTRICTED (project marking) | solid = implemented; dashed = planned", labelloc=t, fontsize=18, fontname="DejaVu Sans", ranksep=.6, nodesep=.4, bgcolor="white", compound=true];
+ node [shape=box, style="rounded,filled", fillcolor="#e9f2f7", color="#35657d", fontname="DejaVu Sans", fontsize=11, margin=".15,.11"];
+ edge [color="#496777", arrowsize=.7, fontname="DejaVu Sans", fontsize=9];
+ subgraph cluster_ios { label="iOS device / SwiftUI boundary"; color="#8db6c5"; style=rounded;
+ ui [label="OCCULUSApp
+DashboardView + PupilView"];
+ cam [label="LiveCameraView
+AVFoundation opt-in preview",fillcolor="#fff2d9"];
+ sim [label="Simulator + Configuration
+SeededRNG / Frame / Observation"];
+ ev [label="Evidence
+SHA-256 + Ed25519 (ephemeral)"];
+ ui -> sim [label="run / visualize"];
+ ui -> ev [label="export synthetic frames"];
+ }
+ subgraph cluster_data { label="OC2 local data-plane contract"; color="#8db6c5"; style=rounded;
+ dp [label="DataPlane
+Frame -> OC2Event"];
+ json [label="JSONL serialization
+oc2.event.v2"];
+ sim -> dp [label="synthetic frames"];
+ dp -> json;
+ }
+ subgraph cluster_py { label="Python scientific reference (independent runtime)"; color="#8db6c5"; style=rounded;
+ model [label="bop5ii.model
+recognition / prediction"];
+ val [label="bop5ii.validation
+statistical assessment"];
+ model -> val;
+ }
+ archive [label="Signed evidence files
+frames.json + manifest.json", fillcolor="#e2f5e8"];
+ ev -> archive;
+ cam -> dp [style=dashed,label="NOT implemented",color="#b07939"];
+ json -> val [style=dashed,label="integration planned",color="#b07939"];
+ broker [label="Authenticated broker / SATCOM transport
+NOT implemented",style="rounded,dashed",fillcolor="#ffffff",color="#b07939"];
+ json -> broker [style=dashed,color="#b07939"];
+}

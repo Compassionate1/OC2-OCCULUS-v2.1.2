@@ -1,0 +1,33 @@
+@startuml
+title OC2 | Simulation, Live Preview and Evidence | v2.0.1
+actor Operator
+participant "DashboardView" as UI
+participant "Simulator" as S
+participant "DataPlane" as D
+participant "Evidence" as E
+participant "Local Files" as F
+participant "LiveCameraView" as C
+participant "AVFoundation" as A
+== Synthetic mode ==
+Operator -> UI: Run simulation(seed, aperture)
+UI -> S: run(Configuration)
+S --> UI: [Frame] + [Observation]
+UI -> UI: render PupilView
+note over D: OC2Event/JSONL contract exists;
+not currently invoked by iOS DashboardView
+Operator -> UI: Export Signed Evidence
+UI -> E: encodeFrames([Frame])
+UI -> E: sign(payload, ephemeral Ed25519 key)
+E --> UI: EvidenceEnvelope
+UI -> F: write frames.json + manifest.json
+== Live camera mode (isolated) ==
+Operator -> C: Enable preview
+C -> A: request camera authorization
+alt permission granted
+A --> C: local camera preview
+else denied
+A --> C: no capture
+end
+note over C,D: No camera pixels or inferred detections
+are forwarded to the data plane.
+@enduml

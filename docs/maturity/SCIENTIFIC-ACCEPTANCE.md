@@ -1,0 +1,3 @@
+# Synthetic scientific acceptance protocol
+
+Separate training/tuning, calibration and untouched holdout sets. Freeze dataset hash, RNG seeds, parameter grid, sample size, and model commit before final evaluation. Metrics: circular angular RMSE, F1 (with explicit class balance), expected calibration error, interval coverage, false-positive rate, and robustness to occlusion/SNR. The `validate_science.py` CLI checks circular RMSE <=15 degrees and empirical interval coverage >=90% as **illustrative** criteria, not validated mission requirements. Require independent approval of thresholds and confidence intervals; run multi-seed experiments, report stratified outcomes and failures. No synthetic result proves physical-world performance.

@@ -1,0 +1,2 @@
+# ADR-0004: Native SwiftUI / Swift package
+Status: Accepted for prototype. Rationale: local/offline iPhone runtime, explicit sensory separation, native CryptoKit signatures, independent portable Swift package tests. Alternatives: embedded Python (packaging cost), PWA (limited native distribution). Consequences: porting numerical models requires independent scientific regression tests; Xcode/macOS required for iOS compilation; local ephemeral key is not a trusted forensic signer.

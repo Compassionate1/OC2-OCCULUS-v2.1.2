@@ -1,0 +1,2 @@
+# OC2 v2.0.2 release notes
+New local Docker Kafka KRaft broker, TimescaleDB hypertable and SQL seed metadata, Python synthetic producer, validated HTTP event gateway, broker-to-DB consumer, refreshed browser UI, mathematics/contract tests, ADR-0007, GOGGLES gap matrix. Existing iOS and Python science source retained. Live sensor capture is NOT integrated with Kafka. Docker services not executable in this build environment; no end-to-end validation claim.

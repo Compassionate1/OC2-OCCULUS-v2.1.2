@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "OC2 Python unittest",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "unittest",
+      "args": [
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "console": "integratedTerminal",
+      "justMyCode": false
+    }
+  ]
+}

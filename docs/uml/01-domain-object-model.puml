@@ -1,0 +1,102 @@
+@startuml
+' OC2 OCCULUS v2.0.1 — Booch-inspired UML object model
+skinparam backgroundColor #FFFFFF
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam linetype ortho
+hide empty members
+title OC2 | Static Domain Object Model | RESTRICTED (project marking)
+package "Simulation domain [implemented]" {
+ class Configuration <<value>> { +seed: UInt64
++objectCount: Int
++steps: Int
++apertureHalfWidth: Double }
+ class SeededRNG <<service>> { -state: UInt64
++uniform(): Double
++gaussian(): Double }
+ class Simulator <<service>> { +run(config): [Frame]
++wrap(angle): Double }
+ class Frame <<entity>> { +tick: Int
++focusBearing: Double
++apertureHalfWidth: Double
++arousal: Double }
+ class Observation <<entity>> { +tick: Int
++objectID: Int
++truthBearing: Double
++measuredBearing: Double?
++modality: String
++occluded: Bool
++snrDB: Double
++ambiguity: Bool
++confidence: Double }
+}
+package "Event and evidence [implemented]" {
+ enum FeedSource { simulation
+camera
+microphone
+imported }
+ enum EventKind { visualObservation
+auditoryObservation
+state
+cameraStatus
+audioStatus
+validation }
+ class OC2Event <<entity>> { +schemaVersion: String
++eventID: UUID
++timestamp: Date
++source: FeedSource
++kind: EventKind
++synthetic: Bool }
+ class DataPlane <<service>> { +events(frames): [OC2Event]
++encodeJSONL(events): Data }
+ class EvidenceEnvelope <<entity>> { +modelVersion: String
++payloadSHA256: String
++algorithm: String
++publicKeyBase64: String
++signatureBase64: String }
+ class Evidence <<service>> { +encodeFrames(frames): Data
++sign(data,key): EvidenceEnvelope
++verify(data,envelope): Bool }
+}
+package "iOS presentation [implemented]" {
+ class OCCULUSApp <<UI>>
+ class DashboardView <<UI>>
+ class PupilView <<UI>>
+ class LiveCameraView <<UI>>
+ class CameraPreviewController <<adapter>> { +status: String
++running: Bool
++start()
++stop() }
+}
+package "Scientific reference [separate Python runtime]" {
+ class "bop5ii.model" as PyModel <<Python>>
+ class "bop5ii.validation" as PyValidation <<Python>>
+}
+Simulator ..> Configuration
+Simulator ..> SeededRNG
+Simulator ..> Frame : produces
+Frame "1" *-- "0..*" Observation : observations
+DataPlane ..> Frame : consumes
+DataPlane ..> OC2Event : serializes
+OC2Event --> FeedSource
+OC2Event --> EventKind
+Evidence ..> Frame : encodes
+Evidence ..> EvidenceEnvelope : signs/verifies
+OCCULUSApp *-- DashboardView
+OCCULUSApp *-- LiveCameraView
+DashboardView ..> Simulator
+DashboardView ..> PupilView
+DashboardView ..> Evidence
+PupilView ..> Frame
+LiveCameraView ..> CameraPreviewController
+PyValidation ..> PyModel
+note bottom of DataPlane
+Current producers: synthetic Frame events only.
+Camera preview is NOT connected to JSONL.
+end note
+note bottom of Evidence
+Ephemeral self-signed Ed25519 key.
+No trusted chain of custody.
+end note
+@enduml

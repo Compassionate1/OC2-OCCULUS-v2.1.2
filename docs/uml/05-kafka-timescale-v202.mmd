@@ -1,0 +1,8 @@
+flowchart LR
+    A[SwiftUI OCCULUS / Python SIM] --> B[Authenticated HTTP gateway]
+    B --> C[Kafka KRaft broker]
+    C --> D[Database consumer]
+    D --> E[(TimescaleDB hypertable)]
+    E --> F[OC2 Dashboard]
+    C -. future .-> G[Parquet evidence archive]
+    H[Python scientific reference] -. independent .-> A

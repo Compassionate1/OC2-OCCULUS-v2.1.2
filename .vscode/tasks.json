@@ -1,0 +1,61 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Test Python",
+      "type": "shell",
+      "command": "python3 -m unittest discover -s tests -v",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Test Reference Model",
+      "type": "shell",
+      "command": "PYTHONPATH=research-python/src python3 -m unittest discover -s research-python/tests -v",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Test Swift",
+      "type": "shell",
+      "command": "swift test",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "BOM validation",
+      "type": "shell",
+      "command": "python3 scripts/test_boms.py",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Science acceptance",
+      "type": "shell",
+      "command": "python3 scripts/validate_science.py --help",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Integration Smoke",
+      "type": "shell",
+      "command": "python3 scripts/integration_smoke.py",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Docker Up",
+      "type": "shell",
+      "command": "docker compose up --build -d --wait",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Docker Down",
+      "type": "shell",
+      "command": "docker compose down",
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
+}

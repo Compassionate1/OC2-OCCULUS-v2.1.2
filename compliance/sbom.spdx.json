@@ -1,0 +1,193 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "OC2-OCCULUS-2.0.3.0",
+  "documentNamespace": "https://example.invalid/oc2/spdx/2.0.3.0",
+  "creationInfo": {
+    "created": "2026-10-24T00:00:00Z",
+    "creators": [
+      "Tool: OC2-source-inventory-generator-2.0.3.0"
+    ]
+  },
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-0",
+      "name": "OC2-OCCULUS",
+      "versionInfo": "2.0.3.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": []
+    },
+    {
+      "SPDXID": "SPDXRef-Package-1",
+      "name": "bop5ii",
+      "versionInfo": "1.0.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": []
+    },
+    {
+      "SPDXID": "SPDXRef-Package-2",
+      "name": "OCCULUSCore",
+      "versionInfo": "2.0.3.0",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": []
+    },
+    {
+      "SPDXID": "SPDXRef-Package-3",
+      "name": "kafka-python",
+      "versionInfo": "2.0.2",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": []
+    },
+    {
+      "SPDXID": "SPDXRef-Package-4",
+      "name": "psycopg[binary]",
+      "versionInfo": "3.2.3",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": []
+    },
+    {
+      "SPDXID": "SPDXRef-Package-5",
+      "name": "python",
+      "versionInfo": "3.12-slim",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": []
+    },
+    {
+      "SPDXID": "SPDXRef-Package-6",
+      "name": "apache/kafka",
+      "versionInfo": "3.9.1",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": []
+    },
+    {
+      "SPDXID": "SPDXRef-Package-7",
+      "name": "timescale/timescaledb",
+      "versionInfo": "2.18.2-pg16",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": []
+    },
+    {
+      "SPDXID": "SPDXRef-Package-8",
+      "name": "setuptools",
+      "versionInfo": ">=68",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": []
+    },
+    {
+      "SPDXID": "SPDXRef-Package-9",
+      "name": "actions/checkout",
+      "versionInfo": "v4",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": []
+    },
+    {
+      "SPDXID": "SPDXRef-Package-10",
+      "name": "actions/setup-python",
+      "versionInfo": "v5",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "externalRefs": []
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-Package-0",
+      "relationshipType": "DESCRIBES"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-0",
+      "relatedSpdxElement": "SPDXRef-Package-1",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-0",
+      "relatedSpdxElement": "SPDXRef-Package-2",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-0",
+      "relatedSpdxElement": "SPDXRef-Package-3",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-0",
+      "relatedSpdxElement": "SPDXRef-Package-4",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-0",
+      "relatedSpdxElement": "SPDXRef-Package-5",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-0",
+      "relatedSpdxElement": "SPDXRef-Package-6",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-0",
+      "relatedSpdxElement": "SPDXRef-Package-7",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-0",
+      "relatedSpdxElement": "SPDXRef-Package-8",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-0",
+      "relatedSpdxElement": "SPDXRef-Package-9",
+      "relationshipType": "DEPENDS_ON"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-0",
+      "relatedSpdxElement": "SPDXRef-Package-10",
+      "relationshipType": "DEPENDS_ON"
+    }
+  ]
+}

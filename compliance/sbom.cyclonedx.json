@@ -1,0 +1,290 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "serialNumber": "urn:uuid:44c50d34-61ad-5c2b-8359-88218dcc3fec",
+  "version": 1,
+  "metadata": {
+    "timestamp": "2026-10-24T00:00:00Z",
+    "tools": [
+      {
+        "vendor": "OC2",
+        "name": "source-inventory-generator",
+        "version": "2.0.3.0"
+      }
+    ],
+    "component": {
+      "type": "application",
+      "bom-ref": "oc2-0",
+      "name": "OC2-OCCULUS",
+      "version": "2.0.3.0",
+      "properties": [
+        {
+          "name": "oc2:inventory_basis",
+          "value": "declared-source"
+        },
+        {
+          "name": "oc2:source_path",
+          "value": "source"
+        },
+        {
+          "name": "oc2:resolution_status",
+          "value": "not-fully-resolved"
+        },
+        {
+          "name": "oc2:source_files_hashed",
+          "value": "139"
+        }
+      ]
+    }
+  },
+  "components": [
+    {
+      "type": "application",
+      "bom-ref": "oc2-0",
+      "name": "OC2-OCCULUS",
+      "version": "2.0.3.0",
+      "properties": [
+        {
+          "name": "oc2:inventory_basis",
+          "value": "declared-source"
+        },
+        {
+          "name": "oc2:source_path",
+          "value": "source"
+        },
+        {
+          "name": "oc2:resolution_status",
+          "value": "not-fully-resolved"
+        },
+        {
+          "name": "oc2:source_files_hashed",
+          "value": "139"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "oc2-1",
+      "name": "bop5ii",
+      "version": "1.0.0",
+      "properties": [
+        {
+          "name": "oc2:inventory_basis",
+          "value": "declared-source"
+        },
+        {
+          "name": "oc2:source_path",
+          "value": "research-python/pyproject.toml"
+        },
+        {
+          "name": "oc2:resolution_status",
+          "value": "not-fully-resolved"
+        }
+      ],
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "oc2-2",
+      "name": "OCCULUSCore",
+      "version": "2.0.3.0",
+      "properties": [
+        {
+          "name": "oc2:inventory_basis",
+          "value": "declared-source"
+        },
+        {
+          "name": "oc2:source_path",
+          "value": "Package.swift"
+        },
+        {
+          "name": "oc2:resolution_status",
+          "value": "not-fully-resolved"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "oc2-3",
+      "name": "kafka-python",
+      "version": "2.0.2",
+      "properties": [
+        {
+          "name": "oc2:inventory_basis",
+          "value": "declared-source"
+        },
+        {
+          "name": "oc2:source_path",
+          "value": "infra/gateway/Dockerfile"
+        },
+        {
+          "name": "oc2:resolution_status",
+          "value": "not-fully-resolved"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "oc2-4",
+      "name": "psycopg[binary]",
+      "version": "3.2.3",
+      "properties": [
+        {
+          "name": "oc2:inventory_basis",
+          "value": "declared-source"
+        },
+        {
+          "name": "oc2:source_path",
+          "value": "infra/gateway/Dockerfile"
+        },
+        {
+          "name": "oc2:resolution_status",
+          "value": "not-fully-resolved"
+        }
+      ]
+    },
+    {
+      "type": "framework",
+      "bom-ref": "oc2-5",
+      "name": "python",
+      "version": "3.12-slim",
+      "properties": [
+        {
+          "name": "oc2:inventory_basis",
+          "value": "declared-source"
+        },
+        {
+          "name": "oc2:source_path",
+          "value": "infra/gateway/Dockerfile"
+        },
+        {
+          "name": "oc2:resolution_status",
+          "value": "not-fully-resolved"
+        }
+      ]
+    },
+    {
+      "type": "container",
+      "bom-ref": "oc2-6",
+      "name": "apache/kafka",
+      "version": "3.9.1",
+      "properties": [
+        {
+          "name": "oc2:inventory_basis",
+          "value": "declared-source"
+        },
+        {
+          "name": "oc2:source_path",
+          "value": "docker-compose.yml"
+        },
+        {
+          "name": "oc2:resolution_status",
+          "value": "not-fully-resolved"
+        }
+      ]
+    },
+    {
+      "type": "container",
+      "bom-ref": "oc2-7",
+      "name": "timescale/timescaledb",
+      "version": "2.18.2-pg16",
+      "properties": [
+        {
+          "name": "oc2:inventory_basis",
+          "value": "declared-source"
+        },
+        {
+          "name": "oc2:source_path",
+          "value": "docker-compose.yml"
+        },
+        {
+          "name": "oc2:resolution_status",
+          "value": "not-fully-resolved"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "oc2-8",
+      "name": "setuptools",
+      "version": ">=68",
+      "properties": [
+        {
+          "name": "oc2:inventory_basis",
+          "value": "declared-source"
+        },
+        {
+          "name": "oc2:source_path",
+          "value": "research-python/pyproject.toml"
+        },
+        {
+          "name": "oc2:resolution_status",
+          "value": "not-fully-resolved"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "oc2-9",
+      "name": "actions/checkout",
+      "version": "v4",
+      "properties": [
+        {
+          "name": "oc2:inventory_basis",
+          "value": "declared-source"
+        },
+        {
+          "name": "oc2:source_path",
+          "value": ".github/workflows/verify.yml"
+        },
+        {
+          "name": "oc2:resolution_status",
+          "value": "not-fully-resolved"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "oc2-10",
+      "name": "actions/setup-python",
+      "version": "v5",
+      "properties": [
+        {
+          "name": "oc2:inventory_basis",
+          "value": "declared-source"
+        },
+        {
+          "name": "oc2:source_path",
+          "value": ".github/workflows/verify.yml"
+        },
+        {
+          "name": "oc2:resolution_status",
+          "value": "not-fully-resolved"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "oc2-0",
+      "dependsOn": [
+        "oc2-1",
+        "oc2-2",
+        "oc2-3",
+        "oc2-4",
+        "oc2-5",
+        "oc2-6",
+        "oc2-7",
+        "oc2-8",
+        "oc2-9",
+        "oc2-10"
+      ]
+    }
+  ]
+}
