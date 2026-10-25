@@ -49,7 +49,6 @@ def create_producer(settings: Settings) -> Any:
         try:
             return KafkaProducer(
                 bootstrap_servers=settings.kafka_bootstrap,
-                value_serializer=_json_bytes,
                 acks="all",
                 retries=5,
                 request_timeout_ms=15_000,
@@ -150,7 +149,11 @@ class Handler(BaseHTTPRequestHandler):
             producer = create_producer(self.settings)
             try:
                 for event in events:
-                    producer.send(TOPIC, key=str(event["source_id"]).encode("utf-8"), value=event).get(timeout=15)
+                    producer.send(
+                        TOPIC,
+                        key=str(event["source_id"]).encode("utf-8"),
+                        value=_json_bytes(event),
+                    ).get(timeout=15)
                 producer.flush(timeout=15)
             finally:
                 producer.close(timeout=15)
@@ -168,7 +171,8 @@ class OC2HTTPServer(ThreadingHTTPServer):
 
 def main() -> None:
     settings = Settings.from_environment()
-    server = OC2HTTPServer(("0.0.0.0", 8088), Handler)
+    bind_host = os.getenv("OC2_BIND_HOST", "127.0.0.1")
+    server = OC2HTTPServer((bind_host, 8088), Handler)
     server.settings = settings
     server.serve_forever()
 

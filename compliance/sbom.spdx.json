@@ -609,6 +609,16 @@
       "licenseDeclared": "NOASSERTION",
       "name": "web/index.html",
       "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-61",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "python-tests/test_integration_smoke.py",
+      "versionInfo": "2.1.3"
     }
   ],
   "spdxVersion": "SPDX-2.3"

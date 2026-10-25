@@ -189,7 +189,7 @@
     {
       "name": "scripts/environment_probe.py",
       "type": "file",
-       "version": "2.1.3"
+      "version": "2.1.3"
     },
     {
       "name": "scripts/experiment_analysis.py",
@@ -229,7 +229,7 @@
     {
       "name": "scripts/release_manifest.py",
       "type": "file",
-       "version": "2.1.3"
+      "version": "2.1.3"
     },
     {
       "name": "scripts/run_local_battery.py",
@@ -274,12 +274,12 @@
     {
       "name": "services/__init__.py",
       "type": "file",
-       "version": "2.1.3"
+      "version": "2.1.3"
     },
     {
       "name": "services/consumer.py",
       "type": "file",
-       "version": "2.1.3"
+      "version": "2.1.3"
     },
     {
       "name": "services/contracts.py",
@@ -304,6 +304,11 @@
     {
       "name": "web/index.html",
       "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "type": "file",
+      "name": "python-tests/test_integration_smoke.py",
       "version": "2.1.3"
     }
   ],

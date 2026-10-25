@@ -3,13 +3,13 @@
 ## Packaging-host results
 The available packaging host is Linux x86_64 with Python 3.13.5 and Swift 6.2.1. These results are supporting source-compatibility evidence and are **not** the exact target-platform acceptance result.
 
-- Python core/service/maturity/release-tool tests: **36/36 passed**.
+- Python core/service/maturity/release-tool tests: **39/39 passed**.
 - Python research-model tests: **15/15 passed**.
 - SBOM/CBOM self-tests: **5/5 passed**, including repeated-run source-hash determinism.
 - Swift package tests: **5/5 passed** on Linux x86_64.
 - Python compileall: **passed**.
 - Architecture/source traceability: **passed**.
-- Total executable unit/self-tests observed: **61/61 passed** (56 Python + 5 Swift).
+- Total executable unit/self-tests observed: **64/64 passed** (59 Python + 5 Swift).
 
 ## Scientific acceptance
 The fixed synthetic holdout contained 1,200 observations across 20 trajectories. Three of five criteria passed; two remain below threshold:

@@ -8,7 +8,8 @@ import json
 import os
 import subprocess
 import time
-import urllib.request
+from http.client import HTTPConnection
+from urllib.parse import urlsplit
 
 
 def _count_events() -> int | None:
@@ -21,17 +22,37 @@ def _count_events() -> int | None:
     return int(value) if query.returncode == 0 and value.isdigit() else None
 
 
-def run(url: str, token: str, timeout: int = 90) -> dict[str, object]:
-    request = urllib.request.Request(
-        f"{url.rstrip('/')}/api/seed",
-        data=b"{}",
-        method="POST",
-        headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
-    )
-    with urllib.request.urlopen(request, timeout=15) as response:
+def _post_seed(url: str, token: str) -> dict[str, object]:
+    parsed = urlsplit(url)
+    if parsed.scheme != "http":
+        raise ValueError("integration smoke URL must use http")
+    if parsed.hostname not in {"127.0.0.1", "localhost", "::1"}:
+        raise ValueError("integration smoke URL must target loopback")
+    if parsed.username or parsed.password or parsed.query or parsed.fragment:
+        raise ValueError("integration smoke URL must not contain credentials, query, or fragment")
+    port = parsed.port or 80
+    prefix = parsed.path.rstrip("/")
+    connection = HTTPConnection(parsed.hostname, port, timeout=15)
+    try:
+        connection.request(
+            "POST",
+            f"{prefix}/api/seed",
+            body=b"{}",
+            headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
+        )
+        response = connection.getresponse()
         if response.status not in {200, 201, 202}:
             raise RuntimeError(f"seed endpoint returned HTTP {response.status}")
         payload = json.loads(response.read())
+        if not isinstance(payload, dict):
+            raise TypeError("seed endpoint response must be a JSON object")
+        return payload
+    finally:
+        connection.close()
+
+
+def run(url: str, token: str, timeout: int = 90) -> dict[str, object]:
+    payload = _post_seed(url, token)
 
     deadline = time.monotonic() + timeout
     while time.monotonic() < deadline:

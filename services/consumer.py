@@ -25,8 +25,6 @@ def _consumer(broker: str) -> Any:
         group_id=GROUP_ID,
         enable_auto_commit=False,
         auto_offset_reset="earliest",
-        value_deserializer=lambda raw: json.loads(raw.decode("utf-8")),
-        consumer_timeout_ms=0,
     )
 
 
@@ -38,7 +36,7 @@ def run_once(database_url: str, broker: str) -> None:
         with psycopg.connect(database_url) as connection:
             for message in consumer:
                 try:
-                    event = validate_event(message.value)
+                    event = validate_event(json.loads(message.value.decode("utf-8")))
                     save_event(connection, event)
                     connection.commit()
                     consumer.commit()

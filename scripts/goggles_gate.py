@@ -54,7 +54,8 @@ def build() -> dict[str, Any]:
         {"id": "FEEDBACK-01", "phase": "Feedback", "status": "PASS" if _exists("docs/maturity/EXPERIMENT-PREREGISTRATION.md") else "FAIL", "evidence": "docs/maturity/EXPERIMENT-PREREGISTRATION.md"},
         {"id": "ATO-01", "phase": "Release", "status": "REQUIRES_AUTHORIZATION", "evidence": "GOGGLES does not issue ATO/FedRAMP/CMMC authorization"},
     ]
-    assert all(control["status"] in VALID_STATES for control in controls)
+    if not all(control["status"] in VALID_STATES for control in controls):
+        raise RuntimeError("invalid GOGGLES evidence state")
     local_failures = [control["id"] for control in controls if control["status"] == "FAIL"]
     return {
         "schema": "goggles.release-gate.v3",

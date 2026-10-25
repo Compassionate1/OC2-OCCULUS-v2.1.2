@@ -43,6 +43,7 @@ services:
       OC2_DATABASE_URL: postgresql://oc2:${OC2_DB_PASSWORD:-local-dev-only-change-me}@timescaledb:5432/oc2
       OC2_API_TOKEN: ${OC2_API_TOKEN:-local-demo-token-change-me}
       OC2_MODE: demo
+      OC2_BIND_HOST: 0.0.0.0
     ports: ["127.0.0.1:8088:8088"]
     depends_on:
       timescaledb: {condition: service_healthy}
