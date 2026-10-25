@@ -34,7 +34,7 @@ jobs:
       - name: Build release manifest
         run: python scripts/release_manifest.py . >/dev/null
       - name: Attest manifest
-        uses: actions/attest-build-provenance@v2
+        uses: actions/attest-build-provenance@v4
         with:
           subject-path: release-manifest.json
       - uses: actions/upload-artifact@v4
