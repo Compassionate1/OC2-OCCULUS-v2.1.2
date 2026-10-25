@@ -2,59 +2,48 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Test Python",
+      "label": "OC2: bootstrap macOS",
       "type": "shell",
-      "command": "python3 -m unittest discover -s tests -v",
+      "command": "./scripts/macos-bootstrap.sh",
+      "problemMatcher": []
+    },
+    {
+      "label": "OC2: verify release",
+      "type": "shell",
+      "command": "./scripts/verify-release.sh",
+      "group": {"kind": "test", "isDefault": true},
+      "problemMatcher": []
+    },
+    {
+      "label": "OC2: Python unit tests",
+      "type": "shell",
+      "command": ".venv/bin/python -m unittest discover -s python-tests -v",
       "group": "test",
       "problemMatcher": []
     },
     {
-      "label": "Test Reference Model",
+      "label": "OC2: research tests",
       "type": "shell",
-      "command": "PYTHONPATH=research-python/src python3 -m unittest discover -s research-python/tests -v",
+      "command": "PYTHONPATH=research-python/src .venv/bin/python -m unittest discover -s research-python/tests -v",
       "group": "test",
       "problemMatcher": []
     },
     {
-      "label": "Test Swift",
+      "label": "OC2: environment probe",
       "type": "shell",
-      "command": "swift test",
-      "group": "test",
+      "command": ".venv/bin/python scripts/environment_probe.py --output artifacts/target-environment.json",
       "problemMatcher": []
     },
     {
-      "label": "BOM validation",
+      "label": "OC2: Docker integration",
       "type": "shell",
-      "command": "python3 scripts/test_boms.py",
-      "group": "build",
+      "command": "OC2_API_TOKEN=${OC2_API_TOKEN:?set OC2_API_TOKEN} docker compose up --build -d --wait && .venv/bin/python scripts/integration_smoke.py",
       "problemMatcher": []
     },
     {
-      "label": "Science acceptance",
+      "label": "OC2: Docker down",
       "type": "shell",
-      "command": "python3 scripts/validate_science.py --help",
-      "group": "build",
-      "problemMatcher": []
-    },
-    {
-      "label": "Integration Smoke",
-      "type": "shell",
-      "command": "python3 scripts/integration_smoke.py",
-      "group": "build",
-      "problemMatcher": []
-    },
-    {
-      "label": "Docker Up",
-      "type": "shell",
-      "command": "docker compose up --build -d --wait",
-      "group": "build",
-      "problemMatcher": []
-    },
-    {
-      "label": "Docker Down",
-      "type": "shell",
-      "command": "docker compose down",
-      "group": "build",
+      "command": "docker compose down -v",
       "problemMatcher": []
     }
   ]

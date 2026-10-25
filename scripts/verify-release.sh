@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname "$0")/.."
-python3 -m unittest discover -s tests -v
-PYTHONPATH=research-python/src python3 -m unittest discover -s research-python/tests -v
-python3 scripts/test_boms.py
-python3 scripts/check_architecture.py
-if command -v swift >/dev/null; then swift test; else echo 'Swift unavailable: gate remains pending'; fi
+mkdir -p artifacts/test-results artifacts/telemetry
+PYTHON=${PYTHON:-python3}
+
+# Exact target acceptance is required for this release verification entry point.
+"$PYTHON" scripts/environment_probe.py --output artifacts/target-environment.json
+"$PYTHON" scripts/run_local_battery.py
+"$PYTHON" scripts/generate_boms.py
+"$PYTHON" scripts/release_manifest.py . >/dev/null
+
+# The gate intentionally exits non-zero while any local acceptance criterion fails.
+"$PYTHON" scripts/goggles_gate.py --output artifacts/release-gate.json

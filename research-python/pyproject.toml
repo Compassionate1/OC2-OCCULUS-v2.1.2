@@ -1,15 +1,26 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=80"]
 build-backend = "setuptools.build_meta"
+
 [project]
-name = "bop5ii"
-version = "1.0.0"
-description = "RESTRICTED (user-defined) multisensory attention research simulator"
-requires-python = ">=3.10"
-license = {text = "MIT"}
+name = "oc2-bop5ii"
+version = "2.1.3"
+description = "OC2/OCCULUS synthetic multisensory attention research model"
+requires-python = ">=3.14"
+license = "MIT"
+authors = [{name = "OC2 Engineering"}]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.14",
+  "Programming Language :: Python :: 3.15",
+  "Operating System :: MacOS :: MacOS X",
+]
+
 [project.scripts]
-bop5ii = "bop5ii.cli:main"
+oc2-research = "bop5ii.cli:main"
+
 [tool.setuptools.packages.find]
 where = ["src"]
-[tool.pytest.ini_options]
+
+[tool.unittest]
 testpaths = ["tests"]

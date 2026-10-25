@@ -1,290 +1,327 @@
 {
   "bomFormat": "CycloneDX",
-  "specVersion": "1.5",
-  "serialNumber": "urn:uuid:44c50d34-61ad-5c2b-8359-88218dcc3fec",
-  "version": 1,
-  "metadata": {
-    "timestamp": "2026-10-24T00:00:00Z",
-    "tools": [
-      {
-        "vendor": "OC2",
-        "name": "source-inventory-generator",
-        "version": "2.0.3.0"
-      }
-    ],
-    "component": {
-      "type": "application",
-      "bom-ref": "oc2-0",
-      "name": "OC2-OCCULUS",
-      "version": "2.0.3.0",
-      "properties": [
-        {
-          "name": "oc2:inventory_basis",
-          "value": "declared-source"
-        },
-        {
-          "name": "oc2:source_path",
-          "value": "source"
-        },
-        {
-          "name": "oc2:resolution_status",
-          "value": "not-fully-resolved"
-        },
-        {
-          "name": "oc2:source_files_hashed",
-          "value": "139"
-        }
-      ]
-    }
-  },
   "components": [
     {
-      "type": "application",
-      "bom-ref": "oc2-0",
-      "name": "OC2-OCCULUS",
-      "version": "2.0.3.0",
-      "properties": [
-        {
-          "name": "oc2:inventory_basis",
-          "value": "declared-source"
-        },
-        {
-          "name": "oc2:source_path",
-          "value": "source"
-        },
-        {
-          "name": "oc2:resolution_status",
-          "value": "not-fully-resolved"
-        },
-        {
-          "name": "oc2:source_files_hashed",
-          "value": "139"
-        }
-      ]
+      "name": "bandit",
+      "scope": "dev",
+      "type": "library",
+      "version": "1.9.4"
     },
     {
-      "type": "library",
-      "bom-ref": "oc2-1",
-      "name": "bop5ii",
-      "version": "1.0.0",
-      "properties": [
-        {
-          "name": "oc2:inventory_basis",
-          "value": "declared-source"
-        },
-        {
-          "name": "oc2:source_path",
-          "value": "research-python/pyproject.toml"
-        },
-        {
-          "name": "oc2:resolution_status",
-          "value": "not-fully-resolved"
-        }
-      ],
-      "licenses": [
-        {
-          "license": {
-            "id": "MIT"
-          }
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "bom-ref": "oc2-2",
-      "name": "OCCULUSCore",
-      "version": "2.0.3.0",
-      "properties": [
-        {
-          "name": "oc2:inventory_basis",
-          "value": "declared-source"
-        },
-        {
-          "name": "oc2:source_path",
-          "value": "Package.swift"
-        },
-        {
-          "name": "oc2:resolution_status",
-          "value": "not-fully-resolved"
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "bom-ref": "oc2-3",
       "name": "kafka-python",
-      "version": "2.0.2",
-      "properties": [
-        {
-          "name": "oc2:inventory_basis",
-          "value": "declared-source"
-        },
-        {
-          "name": "oc2:source_path",
-          "value": "infra/gateway/Dockerfile"
-        },
-        {
-          "name": "oc2:resolution_status",
-          "value": "not-fully-resolved"
-        }
-      ]
-    },
-    {
+      "scope": "runtime",
       "type": "library",
-      "bom-ref": "oc2-4",
-      "name": "psycopg[binary]",
-      "version": "3.2.3",
-      "properties": [
-        {
-          "name": "oc2:inventory_basis",
-          "value": "declared-source"
-        },
-        {
-          "name": "oc2:source_path",
-          "value": "infra/gateway/Dockerfile"
-        },
-        {
-          "name": "oc2:resolution_status",
-          "value": "not-fully-resolved"
-        }
-      ]
+      "version": "3.0.11"
     },
     {
-      "type": "framework",
-      "bom-ref": "oc2-5",
-      "name": "python",
-      "version": "3.12-slim",
-      "properties": [
-        {
-          "name": "oc2:inventory_basis",
-          "value": "declared-source"
-        },
-        {
-          "name": "oc2:source_path",
-          "value": "infra/gateway/Dockerfile"
-        },
-        {
-          "name": "oc2:resolution_status",
-          "value": "not-fully-resolved"
-        }
-      ]
-    },
-    {
-      "type": "container",
-      "bom-ref": "oc2-6",
-      "name": "apache/kafka",
-      "version": "3.9.1",
-      "properties": [
-        {
-          "name": "oc2:inventory_basis",
-          "value": "declared-source"
-        },
-        {
-          "name": "oc2:source_path",
-          "value": "docker-compose.yml"
-        },
-        {
-          "name": "oc2:resolution_status",
-          "value": "not-fully-resolved"
-        }
-      ]
-    },
-    {
-      "type": "container",
-      "bom-ref": "oc2-7",
-      "name": "timescale/timescaledb",
-      "version": "2.18.2-pg16",
-      "properties": [
-        {
-          "name": "oc2:inventory_basis",
-          "value": "declared-source"
-        },
-        {
-          "name": "oc2:source_path",
-          "value": "docker-compose.yml"
-        },
-        {
-          "name": "oc2:resolution_status",
-          "value": "not-fully-resolved"
-        }
-      ]
-    },
-    {
+      "name": "pip-audit",
+      "scope": "dev",
       "type": "library",
-      "bom-ref": "oc2-8",
-      "name": "setuptools",
-      "version": ">=68",
-      "properties": [
-        {
-          "name": "oc2:inventory_basis",
-          "value": "declared-source"
-        },
-        {
-          "name": "oc2:source_path",
-          "value": "research-python/pyproject.toml"
-        },
-        {
-          "name": "oc2:resolution_status",
-          "value": "not-fully-resolved"
-        }
-      ]
+      "version": "2.10.1"
     },
     {
+      "name": "psycopg",
+      "scope": "runtime",
       "type": "library",
-      "bom-ref": "oc2-9",
-      "name": "actions/checkout",
-      "version": "v4",
-      "properties": [
-        {
-          "name": "oc2:inventory_basis",
-          "value": "declared-source"
-        },
-        {
-          "name": "oc2:source_path",
-          "value": ".github/workflows/verify.yml"
-        },
-        {
-          "name": "oc2:resolution_status",
-          "value": "not-fully-resolved"
-        }
-      ]
+      "version": "3.3.6"
     },
     {
+      "name": "ruff",
+      "scope": "dev",
       "type": "library",
-      "bom-ref": "oc2-10",
-      "name": "actions/setup-python",
-      "version": "v5",
-      "properties": [
-        {
-          "name": "oc2:inventory_basis",
-          "value": "declared-source"
-        },
-        {
-          "name": "oc2:source_path",
-          "value": ".github/workflows/verify.yml"
-        },
-        {
-          "name": "oc2:resolution_status",
-          "value": "not-fully-resolved"
-        }
-      ]
+      "version": "0.16.8"
+    },
+    {
+      "name": ".github/dependabot.yml",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": ".github/workflows/integration.yml",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": ".github/workflows/release-evidence.yml",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": ".github/workflows/security.yml",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": ".github/workflows/target-macos.yml",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": ".github/workflows/verify.yml",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "Package.swift",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "Sources/OCCULUSCore/DataPlane.swift",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "Sources/OCCULUSCore/Evidence.swift",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "Sources/OCCULUSCore/Simulation.swift",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "Tests/OCCULUSCoreTests/DataPlaneTests.swift",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "Tests/OCCULUSCoreTests/SimulationTests.swift",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "dashboard/legacy-synthetic-dashboard.html",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "docker-compose.yml",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "iOS/OCCULUSApp/DashboardView.swift",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "iOS/OCCULUSApp/LiveCameraView.swift",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "iOS/OCCULUSApp/OCCULUSApp.swift",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "infra/db/001_init.sql",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "project.yml",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "python-tests/test_maturity.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "python-tests/test_oc2_math.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "python-tests/test_release_tools.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "python-tests/test_telemetry.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "research-python/src/bop5ii/__init__.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "research-python/src/bop5ii/__main__.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "research-python/src/bop5ii/cli.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "research-python/src/bop5ii/model.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "research-python/src/bop5ii/validation.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "research-python/tests/test_model.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "scripts/check_architecture.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "scripts/collect_telemetry.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "scripts/environment_probe.py",
+      "type": "file",
+       "version": "2.1.3"
+    },
+    {
+      "name": "scripts/experiment_analysis.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "scripts/generate_boms.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "scripts/git_metrics.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "scripts/goggles_gate.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "scripts/integration_smoke.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "scripts/macos-bootstrap.sh",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "scripts/process_metrics.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "scripts/release_manifest.py",
+      "type": "file",
+       "version": "2.1.3"
+    },
+    {
+      "name": "scripts/run_local_battery.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "scripts/summarize_telemetry.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "scripts/test_boms.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "scripts/validate_science.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "scripts/verify-release.sh",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "scripts/verify-v202.sh",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "scripts/verify.sh",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "scripts/verify_evidence.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "services/__init__.py",
+      "type": "file",
+       "version": "2.1.3"
+    },
+    {
+      "name": "services/consumer.py",
+      "type": "file",
+       "version": "2.1.3"
+    },
+    {
+      "name": "services/contracts.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "services/gateway.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "services/simulator.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "services/store.py",
+      "type": "file",
+      "version": "2.1.3"
+    },
+    {
+      "name": "web/index.html",
+      "type": "file",
+      "version": "2.1.3"
     }
   ],
-  "dependencies": [
+  "metadata": {
+    "component": {
+      "name": "OC2-OCCULUS",
+      "type": "application",
+      "version": "2.1.3"
+    },
+    "timestamp": "2026-10-25T00:00:00Z"
+  },
+  "properties": [
     {
-      "ref": "oc2-0",
-      "dependsOn": [
-        "oc2-1",
-        "oc2-2",
-        "oc2-3",
-        "oc2-4",
-        "oc2-5",
-        "oc2-6",
-        "oc2-7",
-        "oc2-8",
-        "oc2-9",
-        "oc2-10"
-      ]
+      "name": "oc2:inventory-scope",
+      "value": "source-derived; transitive runtime scan pending CI"
     }
-  ]
+  ],
+  "serialNumber": "urn:uuid:00000000-000-4000-8000-000000002113",
+  "specVersion": "1.6",
+  "version": 1
 }

@@ -1,234 +1,48 @@
 {
   "bomFormat": "CycloneDX",
-  "specVersion": "1.6",
-  "serialNumber": "urn:uuid:97765f8e-deb8-5613-bc69-f0d9876f5773",
-  "version": 1,
-  "metadata": {
-    "timestamp": "2026-10-24T00:00:00Z",
-    "component": {
-      "type": "application",
-      "name": "OC2-OCCULUS",
-      "version": "2.0.3.0"
-    }
-  },
   "components": [
     {
-      "type": "cryptographic-asset",
-      "bom-ref": "crypto-0",
-      "name": "Ed25519 / Sources/OCCULUSCore/Evidence.swift",
-      "cryptoProperties": {
-        "assetType": "algorithm",
-        "algorithmProperties": {
-          "primitive": "signature",
-          "parameterSetIdentifier": "Ed25519"
-        }
-      },
+      "name": "SHA-256",
       "properties": [
         {
-          "name": "oc2:source_path",
-          "value": "Sources/OCCULUSCore/Evidence.swift"
-        },
-        {
-          "name": "oc2:usage",
-          "value": "CryptoKit Curve25519.Signing; ephemeral signer key; iOS"
-        },
-        {
-          "name": "oc2:status",
-          "value": "observed"
+          "name": "purpose",
+          "value": "source/release integrity"
         }
-      ]
+      ],
+      "type": "cryptographic-asset",
+      "version": "FIPS 180-4"
     },
     {
-      "type": "cryptographic-asset",
-      "bom-ref": "crypto-1",
-      "name": "Ed25519 / scripts/verify_evidence.py",
-      "cryptoProperties": {
-        "assetType": "algorithm",
-        "algorithmProperties": {
-          "primitive": "signature",
-          "parameterSetIdentifier": "Ed25519"
-        }
-      },
+      "name": "Ed25519",
       "properties": [
         {
-          "name": "oc2:source_path",
-          "value": "scripts/verify_evidence.py"
-        },
-        {
-          "name": "oc2:usage",
-          "value": "Python cryptography public-key verification"
-        },
-        {
-          "name": "oc2:status",
-          "value": "observed"
+          "name": "purpose",
+          "value": "synthetic evidence signature verification"
         }
-      ]
+      ],
+      "type": "cryptographic-asset",
+      "version": "RFC 8032"
     },
     {
-      "type": "cryptographic-asset",
-      "bom-ref": "crypto-2",
-      "name": "SHA-256 / Sources/OCCULUSCore/Evidence.swift",
-      "cryptoProperties": {
-        "assetType": "algorithm",
-        "algorithmProperties": {
-          "primitive": "hash",
-          "parameterSetIdentifier": "SHA-256"
-        }
-      },
+      "name": "GitHub OIDC provenance",
       "properties": [
         {
-          "name": "oc2:source_path",
-          "value": "Sources/OCCULUSCore/Evidence.swift"
-        },
-        {
-          "name": "oc2:usage",
-          "value": "CryptoKit SHA256 payload integrity"
-        },
-        {
-          "name": "oc2:status",
-          "value": "observed"
+          "name": "purpose",
+          "value": "release attestation"
         }
-      ]
-    },
-    {
+      ],
       "type": "cryptographic-asset",
-      "bom-ref": "crypto-3",
-      "name": "SHA-256 / scripts/verify_evidence.py",
-      "cryptoProperties": {
-        "assetType": "algorithm",
-        "algorithmProperties": {
-          "primitive": "hash",
-          "parameterSetIdentifier": "SHA-256"
-        }
-      },
-      "properties": [
-        {
-          "name": "oc2:source_path",
-          "value": "scripts/verify_evidence.py"
-        },
-        {
-          "name": "oc2:usage",
-          "value": "hashlib SHA-256 payload integrity"
-        },
-        {
-          "name": "oc2:status",
-          "value": "observed"
-        }
-      ]
-    },
-    {
-      "type": "cryptographic-asset",
-      "bom-ref": "crypto-4",
-      "name": "SHA-256 / SHA256SUMS.txt",
-      "cryptoProperties": {
-        "assetType": "algorithm",
-        "algorithmProperties": {
-          "primitive": "hash",
-          "parameterSetIdentifier": "SHA-256"
-        }
-      },
-      "properties": [
-        {
-          "name": "oc2:source_path",
-          "value": "SHA256SUMS.txt"
-        },
-        {
-          "name": "oc2:usage",
-          "value": "repository source integrity digests"
-        },
-        {
-          "name": "oc2:status",
-          "value": "observed"
-        }
-      ]
-    },
-    {
-      "type": "cryptographic-asset",
-      "bom-ref": "crypto-5",
-      "name": "TLS / services/gateway.py",
-      "cryptoProperties": {
-        "assetType": "protocol"
-      },
-      "properties": [
-        {
-          "name": "oc2:source_path",
-          "value": "services/gateway.py"
-        },
-        {
-          "name": "oc2:usage",
-          "value": "NOT CONFIGURED: HTTP gateway currently uses plaintext"
-        },
-        {
-          "name": "oc2:status",
-          "value": "unprotected-or-not-cryptographic"
-        }
-      ]
-    },
-    {
-      "type": "cryptographic-asset",
-      "bom-ref": "crypto-6",
-      "name": "SASL/TLS / docker-compose.yml",
-      "cryptoProperties": {
-        "assetType": "protocol"
-      },
-      "properties": [
-        {
-          "name": "oc2:source_path",
-          "value": "docker-compose.yml"
-        },
-        {
-          "name": "oc2:usage",
-          "value": "NOT CONFIGURED: Kafka PLAINTEXT listener"
-        },
-        {
-          "name": "oc2:status",
-          "value": "unprotected-or-not-cryptographic"
-        }
-      ]
-    },
-    {
-      "type": "cryptographic-asset",
-      "bom-ref": "crypto-7",
-      "name": "TLS / docker-compose.yml",
-      "cryptoProperties": {
-        "assetType": "protocol"
-      },
-      "properties": [
-        {
-          "name": "oc2:source_path",
-          "value": "docker-compose.yml"
-        },
-        {
-          "name": "oc2:usage",
-          "value": "NOT CONFIGURED: DB internal transport not configured"
-        },
-        {
-          "name": "oc2:status",
-          "value": "unprotected-or-not-cryptographic"
-        }
-      ]
-    },
-    {
-      "type": "cryptographic-asset",
-      "bom-ref": "crypto-8",
-      "name": "Bearer API token / services/gateway.py",
-      "cryptoProperties": {
-        "assetType": "protocol"
-      },
-      "properties": [
-        {
-          "name": "oc2:source_path",
-          "value": "services/gateway.py"
-        },
-        {
-          "name": "oc2:usage",
-          "value": "shared token; NOT cryptographic signature; no TLS"
-        },
-        {
-          "name": "oc2:status",
-          "value": "unprotected-or-not-cryptographic"
-        }
-      ]
+      "version": "workflow-managed"
     }
-  ]
+  ],
+  "metadata": {
+    "component": {
+      "name": "OC2-OCCULUS",
+      "type": "application",
+      "version": "2.1.3"
+    },
+    "timestamp": "2026-10-25T00:00:00Z"
+  },
+  "specVersion": "1.6",
+  "version": 1
 }

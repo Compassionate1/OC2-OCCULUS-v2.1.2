@@ -1,32 +1,46 @@
 name: Signed release evidence
+
 on:
   workflow_dispatch:
   push:
-    tags: ['v*']
+    tags: ["v*"]
+
 permissions:
   contents: read
   id-token: write
   attestations: write
+
 jobs:
-  attest:
+  release-evidence:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
-      - name: Unit tests
+          python-version: "3.14.9"
+      - name: Install
         run: |
+          python -m pip install --upgrade pip
           python -m pip install -e ./research-python
-          PYTHONPATH=.:research-python/src python -m unittest discover -s tests -v
-          PYTHONPATH=.:research-python/src python -m unittest discover -s research-python/tests -v
-      - name: Generate manifest
-        run: python scripts/release_manifest.py .
+          python -m pip install -r requirements/runtime.txt
+      - name: Verify
+        env:
+          PYTHONPATH: .:research-python/src
+        run: |
+          python -m unittest discover -s python-tests -v
+          python -m unittest discover -s research-python/tests -v
+          python scripts/test_boms.py
+          python scripts/check_architecture.py
+      - name: Build release manifest
+        run: python scripts/release_manifest.py . >/dev/null
       - name: Attest manifest
         uses: actions/attest-build-provenance@v2
         with:
           subject-path: release-manifest.json
       - uses: actions/upload-artifact@v4
         with:
-          name: release-manifest
-          path: release-manifest.json
+          name: signed-release-evidence-input
+          path: |
+            release-manifest.json
+            SHA256SUMS.txt
+            compliance/

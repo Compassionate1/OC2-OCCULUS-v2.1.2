@@ -1,0 +1,27 @@
+{
+  "project": "OC2-OCCULUS",
+  "release": "2.1.3",
+  "target": {
+    "os": "macOS 27.2 (26B118)",
+    "architecture": "Darwin arm64 27.2.0",
+    "shell": "zsh 5.9 (arm64-apple-darwin26.0)",
+    "vscode": {
+      "version": "1.143.0",
+      "commit": "2d0b7506a36c1d6db9a466440131a8e01eab2289",
+      "date": "2026-10-20T14:31:47-07:00",
+      "electron": "43.7.7",
+      "electronBuildId": "15743441",
+      "chromium": "150.0.7871.250",
+      "node": "24.21.0",
+      "v8": "15.0.245.31-electron.0",
+      "copilot": "1.0.100-1",
+      "copilot_sdk": "1.0.23-preview.5"
+    },
+    "python": {
+      "minimum": "3.14",
+      "preferred_patch": "3.14.9",
+      "forward_ci": "3.15.1"
+    }
+  },
+  "verification_policy": "Exact target validation must execute on the designated Darwin arm64 host; source-package tests on other hosts are supporting evidence only."
+}

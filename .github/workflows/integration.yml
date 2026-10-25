@@ -1,0 +1,42 @@
+name: OC2 Kafka TimescaleDB integration
+
+on:
+  pull_request:
+  push:
+    branches: [main, develop]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14.9"
+      - name: Start real Kafka and TimescaleDB stack
+        env:
+          OC2_API_TOKEN: ci-only-token
+          OC2_DB_PASSWORD: ci-only-password
+        run: docker compose up --build -d --wait
+      - name: Seed and validate persistence
+        env:
+          OC2_API_TOKEN: ci-only-token
+        run: python scripts/collect_telemetry.py --output artifacts/telemetry/integration.jsonl --phase integration -- python scripts/integration_smoke.py
+      - name: Capture logs on failure
+        if: failure()
+        run: docker compose logs --no-color > integration-logs.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: integration-evidence
+          path: |
+            artifacts/telemetry/
+            integration-logs.txt
+          if-no-files-found: ignore
+      - name: Stop stack
+        if: always()
+        run: docker compose down -v

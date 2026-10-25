@@ -1,17 +1,62 @@
 #!/usr/bin/env python3
-"""Pre-registered A/B process experiment analysis; independent observations assumed."""
-import argparse,json,math,random,statistics
-from pathlib import Path
+"""Deterministic bootstrap comparison for controlled process experiments."""
 
-def analyze(baseline,treatment,iterations=2000,seed=202603):
-    if len(baseline)<5 or len(treatment)<5:raise ValueError('At least five observations per arm required')
-    if any(not math.isfinite(x) or x<0 for x in baseline+treatment):raise ValueError('Durations must be finite nonnegative')
-    rng=random.Random(seed); delta=statistics.mean(baseline)-statistics.mean(treatment)
-    draws=[]
-    for _ in range(iterations):
-        b=[rng.choice(baseline) for _ in baseline];t=[rng.choice(treatment) for _ in treatment]
-        draws.append(statistics.mean(b)-statistics.mean(t))
-    draws.sort();lo=draws[int(.025*(iterations-1))];hi=draws[int(.975*(iterations-1))]
-    return {'schema':'oc2.experiment.v1','baseline_n':len(baseline),'treatment_n':len(treatment),'mean_reduction_seconds':round(delta,6),'bootstrap_95_ci_seconds':[round(lo,6),round(hi,6)],'improvement_supported':lo>0,'seed':seed,'iterations':iterations,'limitations':'Bootstrap assumes independent representative observations; randomization and pre-registration must be independently documented.'}
-if __name__=='__main__':
-    ap=argparse.ArgumentParser();ap.add_argument('input');ap.add_argument('--output',required=True);a=ap.parse_args();d=json.loads(Path(a.input).read_text());Path(a.output).write_text(json.dumps(analyze(d['baseline'],d['treatment']),indent=2)+'\n')
+from __future__ import annotations
+
+import argparse
+import json
+import random
+import statistics
+from pathlib import Path
+from typing import Sequence
+
+
+def _bootstrap_mean(values: Sequence[float], rng: random.Random) -> float:
+    return statistics.mean(rng.choice(values) for _ in values)
+
+
+def analyze(
+    baseline: Sequence[float], treatment: Sequence[float], *, repetitions: int = 2_000, seed: int = 20261025
+) -> dict[str, object]:
+    if len(baseline) < 2 or len(treatment) < 2:
+        raise ValueError("each arm requires at least two observations")
+    if repetitions < 100:
+        raise ValueError("repetitions must be >= 100")
+    before = [float(value) for value in baseline]
+    after = [float(value) for value in treatment]
+    rng = random.Random(seed)
+    deltas = sorted(_bootstrap_mean(after, rng) - _bootstrap_mean(before, rng) for _ in range(repetitions))
+    low = deltas[int(0.025 * (repetitions - 1))]
+    high = deltas[int(0.975 * (repetitions - 1))]
+    observed = statistics.mean(after) - statistics.mean(before)
+    return {
+        "schema": "oc2.process-experiment.v2",
+        "baseline_n": len(before),
+        "treatment_n": len(after),
+        "baseline_mean": statistics.mean(before),
+        "treatment_mean": statistics.mean(after),
+        "observed_delta": observed,
+        "bootstrap_delta_95": [low, high],
+        "improvement_direction": "lower_is_better",
+        "evidence_of_improvement": high < 0.0,
+        "seed": seed,
+        "repetitions": repetitions,
+    }
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("baseline", type=Path)
+    parser.add_argument("treatment", type=Path)
+    parser.add_argument("--output", type=Path, required=True)
+    args = parser.parse_args()
+    before = json.loads(args.baseline.read_text(encoding="utf-8"))
+    after = json.loads(args.treatment.read_text(encoding="utf-8"))
+    result = analyze(before, after)
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    print(json.dumps(result, indent=2, sort_keys=True))
+
+
+if __name__ == "__main__":
+    main()

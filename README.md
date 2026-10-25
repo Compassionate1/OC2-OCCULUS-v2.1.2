@@ -1,42 +1,53 @@
-# OC2 OCCULUS v2.0.3.0 — Engineering Telemetry Foundation
+# OC2 — OCCULUS v2.1.3
 
-**Development release.** See [P0 maturity implementation plan](docs/maturity/IMPLEMENTATION-PLAN-v2.0.3.0.md), [release notes](RELEASE-v2.0.3.0.md) and [ADR-0008](docs/maturity/ADR-0008-TELEMETRY-AND-RELEASE-GATES.md).
+**Project marking:** RESTRICTED — BOP5ii (project-specific label; not a government security classification)
 
-# OC2 — OCCULUS v2.0.2.2 | RESTRICTED (project-defined)
-BOP5ii SATCOM-inspired research product: merged Swift/SwiftUI OCCULUS, BOP5ii Python scientific reference, Booch UML, and new Kafka/TimescaleDB multimodal event plane. SATCOM-inspired is architectural; no satellite connectivity.
+OC2 is a synthetic multisensory attention research and engineering platform combining deterministic Python models, a Swift package/native prototype, Kafka event streaming, TimescaleDB persistence, engineering telemetry, Booch-oriented architecture documentation, and GOGGLES v3.0.0 DevSecOps evidence controls.
 
-## Quickstart (Docker required)
+## Target workstation
+- macOS 27.2 (26B118), Darwin arm64 27.2.0
+- Microsoft Visual Studio Code 1.143.0, commit `2d0b7506a36c1d6db9a466440131a8e01eab2289`
+- Electron 43.7.7 / Chromium 150.0.7871.250 / Node.js 24.21.0 / V8 15.0.245.31-electron.0
+- zsh 5.9
+- Python >=3.14; preferred baseline 3.14.9; forward CI 3.15.1
+
+The complete target fingerprint is in `docs/release/TARGET-ENVIRONMENT-v2.1.3.json`.
+
+## Start on macOS
 ```bash
-cp .env.example .env
-# Edit .env secrets before any nonlocal deployment
-# localhost-only gateway 8088 and PostgreSQL 5433
-docker compose up --build -d
-curl http://127.0.0.1:8088/health
-curl -X POST -H 'Authorization: Bearer YOUR_TOKEN' http://127.0.0.1:8088/api/seed
-open http://127.0.0.1:8088
+./scripts/macos-bootstrap.sh
+source .venv/bin/activate
+./scripts/verify-release.sh
 ```
-The dashboard requests the configured API token. The `seed` endpoint produces repeatable synthetic tracks, with new event UUIDs and timestamps each run. Consumer writes them into the Timescale hypertable asynchronously. SQL initializes the database and two synthetic track metadata rows on the first boot; `docker compose down -v` deletes database data.
 
-## Offline tests (no Docker required)
+Open `OC2-OCCULUS.code-workspace` in VS Code. The workspace includes Python debugging, unit-test tasks, environment probing, Docker integration tasks, Ruff formatting, Git tooling, and Swift support.
+
+## Data plane
 ```bash
-./scripts/verify-v202.sh
+export OC2_API_TOKEN='replace-with-a-dev-secret'
+export OC2_DB_PASSWORD='replace-with-a-dev-secret'
+docker compose up --build -d --wait
+python scripts/integration_smoke.py
+docker compose down -v
 ```
-For Python-only tests: `python3 -m unittest discover -s tests -v`.
 
-## iOS
-The v2.0.1 SwiftUI application and Swift package are retained; build with `xcodegen generate` on macOS and open the generated project. The iOS app is **not yet connected** to the gateway; use an authorized HTTP producer conforming to `oc2.event.v1` for live metadata. Local preview remains separate. iOS runtime, broker/database end-to-end, and production signing remain unverified here.
+The stack uses Apache Kafka, TimescaleDB/PostgreSQL, an authenticated Python gateway, and an explicit Kafka consumer. No live Kafka/TimescaleDB PASS is claimed unless the smoke test executes successfully.
 
-## Scope and release gates
-See `docs/ADR-0007-EVENT-STREAMING.md`, `docs/GOGGLES-v2.0.2-CROSSCHECK.md`, `docs/RELEASE-GATES-OC2.md`, and `docs/uml/`. This is a development release, not accredited production infrastructure. RESTRICTED is a project label only.
+## GOGGLES v3.0.0
+GOGGLES evidence spans Plan, Develop, Build, Test, Release, Deliver, Deploy, Operate, Monitor and Feedback. Evidence states are explicit; missing external evidence remains `NOT_CONFIGURED` or `REQUIRES_AUTHORIZATION`. Source SBOM/CBOM and manifests are repository-derived and do not replace runtime/container scanning.
 
-## v2.0.2.1 SBOM / CBOM
+## Release controls
+- Python 3.14.9 / 3.15.1 CI matrix
+- Swift test job
+- Bandit SAST + pip-audit SCA
+- Docker Kafka/TimescaleDB integration
+- deterministic SHA-256 manifest and checksums
+- CycloneDX/SPDX SBOM plus CBOM
+- GitHub OIDC build-provenance attestation on release tags
+- self-hosted exact-target macOS acceptance workflow
+- process performance baseline and controlled experiment tooling
 
-Run `python3 scripts/generate_boms.py` and `python3 scripts/test_boms.py`. See `docs/BOM-SUPPLY-CHAIN-v2.0.2.1.md`. These inventories are source-declared and **not** full resolved runtime transitive SBOMs.
+See `RELEASE-v2.1.3.md` and `docs/release/IMPLEMENTATION-PLAN-v2.1.3.md`.
 
-## Agile Data Product documentation (ADP-1)
-
-The reverse-engineered documentation suite is in [`docs/agile-data-product/INDEX.md`](docs/agile-data-product/INDEX.md). This refresh preserves the v2.0.2.1 runtime baseline; it does not claim production GOGGLES compliance or complete runtime SBOM/CBOM coverage.
-
-## v2.0.2.2 acquisition planning addendum
-
-See [`docs/acquisition/00-ACQUISITION-INDEX.md`](docs/acquisition/00-ACQUISITION-INDEX.md) for a sample task order/PWS, conditional sole-source justification template, illustrative IGCE, CLIN structure, QASP, CDRLs, COR checklist, market-research plan, risk register, and requirements traceability. **No award or sole-source legal basis is asserted.** GitHub has not been published from this archive. Application runtime remains inherited from v2.0.2.1 pending end-to-end integration verification.
+## Current qualification status
+The source/tooling engineering battery is green on the packaging host, but the release is **HOLD** for scientific acceptance because two fixed validation thresholds remain unmet. Exact macOS 27.2 / Python 3.14.9 qualification, live Kafka/TimescaleDB integration, hosted security scans, GitHub protection enforcement, and signed release attestation are intentionally separate gates.

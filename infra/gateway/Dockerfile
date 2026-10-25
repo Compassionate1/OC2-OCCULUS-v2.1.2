@@ -1,7 +1,15 @@
-FROM python:3.12-slim
+FROM python:3.14.9-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
 WORKDIR /app
-COPY services /app/services
-COPY web /app/web
-RUN pip install --no-cache-dir kafka-python==2.0.2 psycopg[binary]==3.2.3
+COPY requirements/runtime.txt /tmp/runtime.txt
+RUN python -m pip install --no-cache-dir --requirement /tmp/runtime.txt \
+    && useradd --create-home --uid 10001 oc2
+COPY --chown=oc2:oc2 services /app/services
+COPY --chown=oc2:oc2 web /app/web
+USER oc2
 EXPOSE 8088
 CMD ["python", "-m", "services.gateway"]

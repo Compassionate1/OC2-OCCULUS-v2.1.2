@@ -1,6 +1,33 @@
+"""Persistence adapter for TimescaleDB/PostgreSQL."""
+
+from __future__ import annotations
+
 import json
-SQL='INSERT INTO oc2_events(event_id,event_time,source_id,mode,event_type,schema_version,bearing_deg,confidence,payload) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s::jsonb) ON CONFLICT DO NOTHING'
-def save_event(conn,e):
-    with conn.cursor() as cur:
-        cur.execute(SQL,(e['event_id'],e['event_time'],e['source_id'],e['mode'],e['event_type'],e['schema_version'],e.get('bearing_deg'),e.get('confidence'),json.dumps(e['payload'])))
-    conn.commit()
+from typing import Any
+
+INSERT_SQL = """
+INSERT INTO oc2_events(
+    event_id, event_time, source_id, mode, event_type,
+    schema_version, bearing_deg, confidence, payload
+) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s::jsonb)
+ON CONFLICT DO NOTHING
+"""
+
+
+def save_event(connection: Any, event: dict[str, Any], *, commit: bool = False) -> None:
+    """Persist one validated event; transaction ownership defaults to the caller."""
+    values = (
+        event["event_id"],
+        event["event_time"],
+        event["source_id"],
+        event["mode"],
+        event["event_type"],
+        event["schema_version"],
+        event.get("bearing_deg"),
+        event.get("confidence"),
+        json.dumps(event["payload"], separators=(",", ":"), sort_keys=True),
+    )
+    with connection.cursor() as cursor:
+        cursor.execute(INSERT_SQL, values)
+    if commit:
+        connection.commit()

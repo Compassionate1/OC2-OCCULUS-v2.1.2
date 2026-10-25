@@ -1,31 +1,75 @@
 name: OC2 verify
-on: [push, pull_request, workflow_dispatch]
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+  workflow_dispatch:
+
 permissions:
   contents: read
+
 jobs:
+  python:
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.14.9", "3.15.1"]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: |
+            requirements/runtime.txt
+            requirements/dev.txt
+            research-python/pyproject.toml
+      - name: Install packages
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ./research-python
+          python -m pip install -r requirements/runtime.txt -r requirements/dev.txt
+      - name: Compile all Python
+        run: python -m compileall -q services scripts research-python/src research-python/tests python-tests
+      - name: Ruff
+        run: ruff check services scripts research-python/src research-python/tests python-tests
+      - name: Unit tests with telemetry
+        run: python scripts/collect_telemetry.py --output artifacts/telemetry/python-${{ matrix.python-version }}.jsonl --phase unit-test -- python -m unittest discover -s python-tests -v
+      - name: Research tests with telemetry
+        env:
+          PYTHONPATH: research-python/src
+        run: python scripts/collect_telemetry.py --output artifacts/telemetry/python-${{ matrix.python-version }}.jsonl --phase research-test -- python -m unittest discover -s research-python/tests -v
+      - name: Architecture and BOM checks
+        run: |
+          python scripts/check_architecture.py
+          python scripts/test_boms.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: python-${{ matrix.python-version }}-evidence
+          path: artifacts/telemetry/
+
   swift:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
       - run: swift test
-  python:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - run: python -m pip install -e ./research-python
-      - run: sudo apt-get update && sudo apt-get install -y graphviz
-      - run: python scripts/check_architecture.py
-      - run: python -m unittest discover -s research-python/tests -v
 
-  bom:
+  source-inventory:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
-      - run: python scripts/test_boms.py
-      - run: git diff --exit-code -- compliance/
+          python-version: "3.14.9"
+      - run: python scripts/generate_boms.py
+      - run: python scripts/release_manifest.py . >/dev/null
+      - uses: actions/upload-artifact@v4
+        with:
+          name: source-inventory
+          path: |
+            compliance/
+            release-manifest.json
+            SHA256SUMS.txt

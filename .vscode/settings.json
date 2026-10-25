@@ -1,16 +1,26 @@
 {
   "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.analysis.typeCheckingMode": "strict",
+  "python.analysis.diagnosticMode": "workspace",
   "python.testing.unittestEnabled": true,
   "python.testing.pytestEnabled": false,
-  "python.testing.unittestArgs": [
-    "-s",
-    "tests",
-    "-v"
-  ],
+  "python.testing.unittestArgs": ["-s", "python-tests", "-v"],
+  "python.terminal.activateEnvironment": true,
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": "explicit",
+      "source.organizeImports.ruff": "explicit"
+    }
+  },
   "files.exclude": {
     "**/__pycache__": true,
-    "**/.build": true
+    "**/.build": true,
+    "**/.venv": true
   },
-  "editor.formatOnSave": true,
-  "terminal.integrated.defaultProfile.osx": "zsh"
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.env.osx": {
+    "PYTHONUTF8": "1"
+  }
 }

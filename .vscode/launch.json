@@ -2,18 +2,23 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "OC2 Python unittest",
+      "name": "OC2: Python unit tests",
       "type": "debugpy",
       "request": "launch",
       "module": "unittest",
-      "args": [
-        "discover",
-        "-s",
-        "tests",
-        "-v"
-      ],
+      "args": ["discover", "-s", "python-tests", "-v"],
       "console": "integratedTerminal",
-      "justMyCode": false
+      "justMyCode": false,
+      "env": {"PYTHONPATH": "${workspaceFolder}:${workspaceFolder}/research-python/src"}
+    },
+    {
+      "name": "OC2: Research CLI",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "bop5ii",
+      "args": ["--trajectories", "100", "--steps", "60", "--output", "artifacts/research"],
+      "console": "integratedTerminal",
+      "env": {"PYTHONPATH": "${workspaceFolder}/research-python/src"}
     }
   ]
 }

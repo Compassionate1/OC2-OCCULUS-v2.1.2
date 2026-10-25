@@ -1,22 +1,59 @@
 #!/usr/bin/env python3
-"""Live stack smoke: send seed request and check DB persistence; requires docker compose."""
-import argparse,json,os,subprocess,time,urllib.request
+"""End-to-end smoke test: HTTP seed -> Kafka -> consumer -> TimescaleDB."""
 
-def run(url,token,timeout):
- req=urllib.request.Request(url.rstrip('/')+'/api/seed',data=b'{}',method='POST',headers={'Authorization':'Bearer '+token,'Content-Type':'application/json'})
- with urllib.request.urlopen(req,timeout=15) as response:
-  if response.status not in (200,201,202):raise RuntimeError('seed endpoint HTTP '+str(response.status))
-  payload=json.loads(response.read())
- deadline=time.monotonic()+timeout
- while time.monotonic()<deadline:
-  sql='SELECT count(*) FROM oc2_events;' # update only after checking actual schema
-  query=subprocess.run(['docker','compose','exec','-T','timescaledb','psql','-U','oc2','-d','oc2','-tAc',sql],capture_output=True,text=True)
-  if query.returncode==0 and query.stdout.strip().isdigit() and int(query.stdout.strip())>0:
-   print(json.dumps({'status':'passed','observation_count':int(query.stdout.strip()),'seed_response':payload}));return
-  time.sleep(2)
- raise RuntimeError('No persisted observations before timeout; inspect consumer logs and schema')
-if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--url',default='http://127.0.0.1:8088');p.add_argument('--token',default=os.getenv('OC2_API_TOKEN',''))
- p.add_argument('--timeout',type=int,default=90);a=p.parse_args()
- if not a.token:p.error('set OC2_API_TOKEN or --token')
- run(a.url,a.token,a.timeout)
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import subprocess
+import time
+import urllib.request
+
+
+def _count_events() -> int | None:
+    command = [
+        "docker", "compose", "exec", "-T", "timescaledb", "psql", "-U", "oc2", "-d", "oc2", "-tAc",
+        "SELECT count(*) FROM oc2_events;",
+    ]
+    query = subprocess.run(command, capture_output=True, text=True, check=False)
+    value = query.stdout.strip()
+    return int(value) if query.returncode == 0 and value.isdigit() else None
+
+
+def run(url: str, token: str, timeout: int = 90) -> dict[str, object]:
+    request = urllib.request.Request(
+        f"{url.rstrip('/')}/api/seed",
+        data=b"{}",
+        method="POST",
+        headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
+    )
+    with urllib.request.urlopen(request, timeout=15) as response:
+        if response.status not in {200, 201, 202}:
+            raise RuntimeError(f"seed endpoint returned HTTP {response.status}")
+        payload = json.loads(response.read())
+
+    deadline = time.monotonic() + timeout
+    while time.monotonic() < deadline:
+        count = _count_events()
+        if count is not None and count > 0:
+            result = {"status": "passed", "observation_count": count, "seed_response": payload}
+            print(json.dumps(result, sort_keys=True))
+            return result
+        time.sleep(2.0)
+    raise RuntimeError("No persisted observations before timeout; inspect consumer and database logs")
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--url", default="http://127.0.0.1:8088")
+    parser.add_argument("--token", default=os.getenv("OC2_API_TOKEN", ""))
+    parser.add_argument("--timeout", type=int, default=90)
+    args = parser.parse_args()
+    if not args.token:
+        parser.error("set OC2_API_TOKEN or pass --token")
+    run(args.url, args.token, args.timeout)
+
+
+if __name__ == "__main__":
+    main()

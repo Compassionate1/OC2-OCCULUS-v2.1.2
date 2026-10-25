@@ -1,0 +1,25 @@
+name: OC2 exact target macOS acceptance
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  target-macos:
+    runs-on: [self-hosted, macOS, ARM64, oc2-macos27]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Capture exact target environment
+        run: python3.14 scripts/environment_probe.py --output artifacts/target-environment.json
+      - name: Bootstrap and verify
+        run: |
+          ./scripts/macos-bootstrap.sh
+          . .venv/bin/activate
+          ./scripts/verify-release.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: exact-target-macos-evidence
+          path: artifacts/

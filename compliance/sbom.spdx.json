@@ -1,193 +1,615 @@
 {
-  "spdxVersion": "SPDX-2.3",
-  "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "OC2-OCCULUS-2.0.3.0",
-  "documentNamespace": "https://example.invalid/oc2/spdx/2.0.3.0",
   "creationInfo": {
-    "created": "2026-10-24T00:00:00Z",
+    "created": "2026-10-25T00:00:00Z",
     "creators": [
-      "Tool: OC2-source-inventory-generator-2.0.3.0"
+      "Tool: OC2 generate_boms.py"
     ]
   },
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://example.invalid/oc2/spdx/v2.1.3",
+  "name": "OC2-OCCULUS-v2.1.3",
   "packages": [
     {
-      "SPDXID": "SPDXRef-Package-0",
-      "name": "OC2-OCCULUS",
-      "versionInfo": "2.0.3.0",
+      "SPDXID": "SPDXRef-Package-1",
+      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "NOASSERTION",
-      "copyrightText": "NOASSERTION",
-      "externalRefs": []
-    },
-    {
-      "SPDXID": "SPDXRef-Package-1",
-      "name": "bop5ii",
-      "versionInfo": "1.0.0",
-      "downloadLocation": "NOASSERTION",
-      "filesAnalyzed": false,
-      "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "MIT",
-      "copyrightText": "NOASSERTION",
-      "externalRefs": []
+      "name": "bandit",
+      "versionInfo": "1.9.4"
     },
     {
       "SPDXID": "SPDXRef-Package-2",
-      "name": "OCCULUSCore",
-      "versionInfo": "2.0.3.0",
+      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "NOASSERTION",
-      "copyrightText": "NOASSERTION",
-      "externalRefs": []
+      "name": "kafka-python",
+      "versionInfo": "3.0.11"
     },
     {
       "SPDXID": "SPDXRef-Package-3",
-      "name": "kafka-python",
-      "versionInfo": "2.0.2",
+      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "NOASSERTION",
-      "copyrightText": "NOASSERTION",
-      "externalRefs": []
+      "name": "pip-audit",
+      "versionInfo": "2.10.1"
     },
     {
       "SPDXID": "SPDXRef-Package-4",
-      "name": "psycopg[binary]",
-      "versionInfo": "3.2.3",
+      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "NOASSERTION",
-      "copyrightText": "NOASSERTION",
-      "externalRefs": []
+      "name": "psycopg",
+      "versionInfo": "3.3.6"
     },
     {
       "SPDXID": "SPDXRef-Package-5",
-      "name": "python",
-      "versionInfo": "3.12-slim",
+      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "NOASSERTION",
-      "copyrightText": "NOASSERTION",
-      "externalRefs": []
+      "name": "ruff",
+      "versionInfo": "0.16.8"
     },
     {
       "SPDXID": "SPDXRef-Package-6",
-      "name": "apache/kafka",
-      "versionInfo": "3.9.1",
+      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "NOASSERTION",
-      "copyrightText": "NOASSERTION",
-      "externalRefs": []
+      "name": ".github/dependabot.yml",
+      "versionInfo": "2.1.3"
     },
     {
       "SPDXID": "SPDXRef-Package-7",
-      "name": "timescale/timescaledb",
-      "versionInfo": "2.18.2-pg16",
+      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "NOASSERTION",
-      "copyrightText": "NOASSERTION",
-      "externalRefs": []
+      "name": ".github/workflows/integration.yml",
+      "versionInfo": "2.1.3"
     },
     {
       "SPDXID": "SPDXRef-Package-8",
-      "name": "setuptools",
-      "versionInfo": ">=68",
+      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "NOASSERTION",
-      "copyrightText": "NOASSERTION",
-      "externalRefs": []
+      "name": ".github/workflows/release-evidence.yml",
+      "versionInfo": "2.1.3"
     },
     {
       "SPDXID": "SPDXRef-Package-9",
-      "name": "actions/checkout",
-      "versionInfo": "v4",
+      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "NOASSERTION",
-      "copyrightText": "NOASSERTION",
-      "externalRefs": []
+      "name": ".github/workflows/security.yml",
+      "versionInfo": "2.1.3"
     },
     {
       "SPDXID": "SPDXRef-Package-10",
-      "name": "actions/setup-python",
-      "versionInfo": "v5",
+      "copyrightText": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "NOASSERTION",
+      "name": ".github/workflows/target-macos.yml",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-11",
       "copyrightText": "NOASSERTION",
-      "externalRefs": []
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": ".github/workflows/verify.yml",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-12",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "Package.swift",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-13",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "Sources/OCCULUSCore/DataPlane.swift",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-14",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "Sources/OCCULUSCore/Evidence.swift",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-15",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "Sources/OCCULUSCore/Simulation.swift",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-16",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "Tests/OCCULUSCoreTests/DataPlaneTests.swift",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-17",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "Tests/OCCULUSCoreTests/SimulationTests.swift",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-18",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "dashboard/legacy-synthetic-dashboard.html",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-19",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "docker-compose.yml",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-20",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "iOS/OCCULUSApp/DashboardView.swift",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-21",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "iOS/OCCULUSApp/LiveCameraView.swift",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-22",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "iOS/OCCULUSApp/OCCULUSApp.swift",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-23",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "infra/db/001_init.sql",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-24",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "project.yml",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-25",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "python-tests/test_maturity.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-26",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "python-tests/test_oc2_math.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-27",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "python-tests/test_release_tools.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-28",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "python-tests/test_telemetry.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-29",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "research-python/src/bop5ii/__init__.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-30",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "research-python/src/bop5ii/__main__.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-31",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "research-python/src/bop5ii/cli.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-32",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "research-python/src/bop5ii/model.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-33",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "research-python/src/bop5ii/validation.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-34",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "research-python/tests/test_model.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-35",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "scripts/check_architecture.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-36",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "scripts/collect_telemetry.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-37",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "scripts/environment_probe.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-38",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "scripts/experiment_analysis.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-39",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "scripts/generate_boms.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-40",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "scripts/git_metrics.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-41",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "scripts/goggles_gate.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-42",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "scripts/integration_smoke.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-43",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "scripts/macos-bootstrap.sh",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-44",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "scripts/process_metrics.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-45",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "scripts/release_manifest.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-46",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "scripts/run_local_battery.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-47",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "scripts/summarize_telemetry.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-48",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "scripts/test_boms.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-49",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "scripts/validate_science.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-50",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "scripts/verify-release.sh",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-51",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "scripts/verify-v202.sh",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-52",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "scripts/verify.sh",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-53",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "scripts/verify_evidence.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-54",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "services/__init__.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-55",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "services/consumer.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-56",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "services/contracts.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-57",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "services/gateway.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-58",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "services/simulator.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-59",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "services/store.py",
+      "versionInfo": "2.1.3"
+    },
+    {
+      "SPDXID": "SPDXRef-Package-60",
+      "copyrightText": "NOASSERTION",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "name": "web/index.html",
+      "versionInfo": "2.1.3"
     }
   ],
-  "relationships": [
-    {
-      "spdxElementId": "SPDXRef-DOCUMENT",
-      "relatedSpdxElement": "SPDXRef-Package-0",
-      "relationshipType": "DESCRIBES"
-    },
-    {
-      "spdxElementId": "SPDXRef-Package-0",
-      "relatedSpdxElement": "SPDXRef-Package-1",
-      "relationshipType": "DEPENDS_ON"
-    },
-    {
-      "spdxElementId": "SPDXRef-Package-0",
-      "relatedSpdxElement": "SPDXRef-Package-2",
-      "relationshipType": "DEPENDS_ON"
-    },
-    {
-      "spdxElementId": "SPDXRef-Package-0",
-      "relatedSpdxElement": "SPDXRef-Package-3",
-      "relationshipType": "DEPENDS_ON"
-    },
-    {
-      "spdxElementId": "SPDXRef-Package-0",
-      "relatedSpdxElement": "SPDXRef-Package-4",
-      "relationshipType": "DEPENDS_ON"
-    },
-    {
-      "spdxElementId": "SPDXRef-Package-0",
-      "relatedSpdxElement": "SPDXRef-Package-5",
-      "relationshipType": "DEPENDS_ON"
-    },
-    {
-      "spdxElementId": "SPDXRef-Package-0",
-      "relatedSpdxElement": "SPDXRef-Package-6",
-      "relationshipType": "DEPENDS_ON"
-    },
-    {
-      "spdxElementId": "SPDXRef-Package-0",
-      "relatedSpdxElement": "SPDXRef-Package-7",
-      "relationshipType": "DEPENDS_ON"
-    },
-    {
-      "spdxElementId": "SPDXRef-Package-0",
-      "relatedSpdxElement": "SPDXRef-Package-8",
-      "relationshipType": "DEPENDS_ON"
-    },
-    {
-      "spdxElementId": "SPDXRef-Package-0",
-      "relatedSpdxElement": "SPDXRef-Package-9",
-      "relationshipType": "DEPENDS_ON"
-    },
-    {
-      "spdxElementId": "SPDXRef-Package-0",
-      "relatedSpdxElement": "SPDXRef-Package-10",
-      "relationshipType": "DEPENDS_ON"
-    }
-  ]
+  "spdxVersion": "SPDX-2.3"
 }

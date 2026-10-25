@@ -1,0 +1,292 @@
+{
+  "config": {
+    "aperture_deg": 25.0,
+    "bearing_noise_floor": 3.0,
+    "horizon": 3,
+    "occlusion_probability": 0.24,
+    "seed": 52,
+    "snr_max_db": 18.0,
+    "snr_min_db": -12.0,
+    "steps": 60,
+    "trajectories": 100,
+    "visual_fov_deg": 70.0
+  },
+  "gates": {
+    "brier_le_0_15": true,
+    "coverage_90_to_99pct": true,
+    "recognition_ece_le_0_15": true,
+    "recognition_f1_ge_0_65": false,
+    "rmse_le_8deg": false
+  },
+  "holdout": {
+    "angular_mae_deg": 8.425896330876872,
+    "angular_rmse_deg": 21.01809023468876,
+    "aperture_brier": 0.06800712067140288,
+    "audio_ambiguity_rate": 0.1825,
+    "change_false_alarm_rate": 0.47416413373860183,
+    "change_precision": 0.5617977528089888,
+    "change_recall": 0.7380073800738007,
+    "interval_95_coverage": 0.9358333333333333,
+    "n": 1200,
+    "recognition_accuracy": 0.6316666666666667,
+    "recognition_ece": 0.12281233519539861,
+    "recognition_macro_f1": 0.6310814138007638,
+    "recognition_reliability_bins": [
+      {
+        "accuracy": 0.3333333333333333,
+        "confidence": 0.3794223629297448,
+        "n": 63
+      },
+      {
+        "accuracy": 0.578125,
+        "confidence": 0.452314533035575,
+        "n": 256
+      },
+      {
+        "accuracy": 0.6784452296819788,
+        "confidence": 0.5513231056010984,
+        "n": 283
+      },
+      {
+        "accuracy": 0.6869565217391305,
+        "confidence": 0.6449090979196639,
+        "n": 230
+      },
+      {
+        "accuracy": 0.6258064516129033,
+        "confidence": 0.7477282259760528,
+        "n": 155
+      },
+      {
+        "accuracy": 0.7033898305084746,
+        "confidence": 0.8457625344995908,
+        "n": 118
+      },
+      {
+        "accuracy": 0.6210526315789474,
+        "confidence": 0.9465199066990027,
+        "n": 95
+      }
+    ],
+    "trajectories": 20,
+    "visual_occlusion_rate": 0.2325
+  },
+  "holdout_by_snr": {
+    "high": {
+      "angular_mae_deg": 7.048721559335775,
+      "angular_rmse_deg": 17.413662092572068,
+      "aperture_brier": 0.05847852132400351,
+      "audio_ambiguity_rate": 0.013468013468013467,
+      "change_false_alarm_rate": 0.1901840490797546,
+      "change_precision": 0.7615384615384615,
+      "change_recall": 0.7388059701492538,
+      "interval_95_coverage": 0.9494949494949495,
+      "n": 297,
+      "recognition_accuracy": 0.8181818181818182,
+      "recognition_ece": 0.2985006920647909,
+      "recognition_macro_f1": 0.8165540225121711,
+      "recognition_reliability_bins": [
+        {
+          "accuracy": 0.32142857142857145,
+          "confidence": 0.3774439520629352,
+          "n": 28
+        },
+        {
+          "accuracy": 0.7272727272727273,
+          "confidence": 0.44864987380729693,
+          "n": 99
+        },
+        {
+          "accuracy": 0.9263157894736842,
+          "confidence": 0.5510681703808138,
+          "n": 95
+        },
+        {
+          "accuracy": 0.9827586206896551,
+          "confidence": 0.6475039358225533,
+          "n": 58
+        },
+        {
+          "accuracy": 1.0,
+          "confidence": 0.7349753920964547,
+          "n": 16
+        },
+        {
+          "accuracy": 1.0,
+          "confidence": 0.8310768701682161,
+          "n": 1
+        }
+      ],
+      "trajectories": 20,
+      "visual_occlusion_rate": 0.23232323232323232
+    },
+    "low": {
+      "angular_mae_deg": 8.904714306622987,
+      "angular_rmse_deg": 22.40942015572127,
+      "aperture_brier": 0.07586356094971076,
+      "audio_ambiguity_rate": 0.3522504892367906,
+      "change_false_alarm_rate": 0.6900369003690037,
+      "change_precision": 0.4876712328767123,
+      "change_recall": 0.7416666666666667,
+      "interval_95_coverage": 0.9354207436399217,
+      "n": 511,
+      "recognition_accuracy": 0.5185909980430529,
+      "recognition_ece": 0.2019724073209385,
+      "recognition_macro_f1": 0.5164135796392684,
+      "recognition_reliability_bins": [
+        {
+          "accuracy": 0.2857142857142857,
+          "confidence": 0.3874030649445636,
+          "n": 7
+        },
+        {
+          "accuracy": 0.46938775510204084,
+          "confidence": 0.4594671460019276,
+          "n": 49
+        },
+        {
+          "accuracy": 0.42168674698795183,
+          "confidence": 0.5549324006493719,
+          "n": 83
+        },
+        {
+          "accuracy": 0.45652173913043476,
+          "confidence": 0.6414750869179209,
+          "n": 92
+        },
+        {
+          "accuracy": 0.5102040816326531,
+          "confidence": 0.7498965022833451,
+          "n": 98
+        },
+        {
+          "accuracy": 0.6263736263736264,
+          "confidence": 0.8486986538446133,
+          "n": 91
+        },
+        {
+          "accuracy": 0.6153846153846154,
+          "confidence": 0.9474004051264601,
+          "n": 91
+        }
+      ],
+      "trajectories": 20,
+      "visual_occlusion_rate": 0.22700587084148727
+    },
+    "medium": {
+      "angular_mae_deg": 8.845143579707075,
+      "angular_rmse_deg": 21.63213431269824,
+      "aperture_brier": 0.0649850620590618,
+      "audio_ambiguity_rate": 0.08928571428571429,
+      "change_false_alarm_rate": 0.41964285714285715,
+      "change_precision": 0.5668202764976958,
+      "change_recall": 0.7321428571428571,
+      "interval_95_coverage": 0.9260204081632653,
+      "n": 392,
+      "recognition_accuracy": 0.6377551020408163,
+      "recognition_ece": 0.07068763342781763,
+      "recognition_macro_f1": 0.6366599631305513,
+      "recognition_reliability_bins": [
+        {
+          "accuracy": 0.35714285714285715,
+          "confidence": 0.37940559829284964,
+          "n": 28
+        },
+        {
+          "accuracy": 0.49074074074074076,
+          "confidence": 0.4524286370008366,
+          "n": 108
+        },
+        {
+          "accuracy": 0.6571428571428571,
+          "confidence": 0.5487006994765303,
+          "n": 105
+        },
+        {
+          "accuracy": 0.7375,
+          "confidence": 0.6469769530920731,
+          "n": 80
+        },
+        {
+          "accuracy": 0.7560975609756098,
+          "confidence": 0.7475222324140756,
+          "n": 41
+        },
+        {
+          "accuracy": 0.9615384615384616,
+          "confidence": 0.8360509500355267,
+          "n": 26
+        },
+        {
+          "accuracy": 0.75,
+          "confidence": 0.9264885674743486,
+          "n": 4
+        }
+      ],
+      "trajectories": 20,
+      "visual_occlusion_rate": 0.23979591836734693
+    }
+  },
+  "holdout_rmse_bootstrap_95": [
+    6.948596263077727,
+    34.844020584978075
+  ],
+  "marking": "RESTRICTED \u2014 USER-DEFINED / NOT GOVERNMENT CLASSIFIED",
+  "project": "OC2/OCCULUS",
+  "release_gate_pass": false,
+  "synthetic_only": true,
+  "train_diagnostics": {
+    "angular_mae_deg": 5.896252691244653,
+    "angular_rmse_deg": 10.269742964742656,
+    "aperture_brier": 0.07124956622556551,
+    "audio_ambiguity_rate": 0.18770833333333334,
+    "change_false_alarm_rate": 0.46223803875049424,
+    "change_precision": 0.5872175141242938,
+    "change_recall": 0.7322765301629238,
+    "interval_95_coverage": 0.9564583333333333,
+    "n": 4800,
+    "recognition_accuracy": 0.636875,
+    "recognition_ece": 0.11268605174715499,
+    "recognition_macro_f1": 0.6368411777217798,
+    "recognition_reliability_bins": [
+      {
+        "accuracy": 0.47577092511013214,
+        "confidence": 0.3781641130408025,
+        "n": 227
+      },
+      {
+        "accuracy": 0.5676895306859205,
+        "confidence": 0.45453847023348853,
+        "n": 1108
+      },
+      {
+        "accuracy": 0.6626402070750647,
+        "confidence": 0.547216796975471,
+        "n": 1159
+      },
+      {
+        "accuracy": 0.6838565022421524,
+        "confidence": 0.6476709703821628,
+        "n": 892
+      },
+      {
+        "accuracy": 0.6918138041733547,
+        "confidence": 0.7480292993568617,
+        "n": 623
+      },
+      {
+        "accuracy": 0.6557017543859649,
+        "confidence": 0.8454108115050718,
+        "n": 456
+      },
+      {
+        "accuracy": 0.6328358208955224,
+        "confidence": 0.9486033337168178,
+        "n": 335
+      }
+    ],
+    "trajectories": 80,
+    "visual_occlusion_rate": 0.233125
+  },
+  "version": "2.1.3"
+}

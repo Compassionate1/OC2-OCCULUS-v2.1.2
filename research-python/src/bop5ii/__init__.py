@@ -1,1 +1,4 @@
-__version__ = '1.0.0'
+"""OC2/BOP5ii synthetic research package."""
+
+__all__ = ["__version__"]
+__version__ = "2.1.3"
