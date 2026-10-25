@@ -1,4 +1,4 @@
 # Reproducible developer/security tooling baseline as of 2026-10-25.
 pip-audit==2.10.1
 bandit==1.9.4
-ruff==0.16.8
+ruff==0.17.1
