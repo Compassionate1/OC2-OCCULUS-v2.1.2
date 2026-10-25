@@ -28,7 +28,7 @@ jobs:
         run: bandit -r services scripts research-python/src -x python-tests,research-python/tests -ll -f json -o bandit-gate.json
       - name: SCA - pip-audit
         run: pip-audit -r requirements/runtime.txt -f json -o pip-audit.json
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: python-security-evidence

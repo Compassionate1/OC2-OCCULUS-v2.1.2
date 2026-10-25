@@ -18,7 +18,7 @@ jobs:
           ./scripts/macos-bootstrap.sh
           . .venv/bin/activate
           ./scripts/verify-release.sh
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: exact-target-macos-evidence

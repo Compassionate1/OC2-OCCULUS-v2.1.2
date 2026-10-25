@@ -45,7 +45,7 @@ jobs:
         run: |
           python scripts/check_architecture.py
           python scripts/test_boms.py
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: python-${{ matrix.python-version }}-evidence
@@ -66,7 +66,7 @@ jobs:
           python-version: "3.14.9"
       - run: python scripts/generate_boms.py
       - run: python scripts/release_manifest.py . >/dev/null
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: source-inventory
           path: |
